@@ -1,5 +1,6 @@
-from datetime import datetime
 from django.db import models
+
+from apps.organizations.models import Teacher
 from apps.users.models import BaseModel
 
 # 1. 设计表结构有几个重要的点
@@ -15,6 +16,7 @@ from apps.users.models import BaseModel
 
 
 class Course(BaseModel):  # 给每一个实体添加一个add_time,做日志分析用
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, verbose_name="讲师")
     name = models.CharField(verbose_name="课程名", max_length=50)
     desc = models.CharField(verbose_name="课程描述", max_length=300)
     learn_times = models.IntegerField(default=0, verbose_name="学习时长(分钟数)")  # 以最小单位存数据库，秒
