@@ -12,7 +12,10 @@ class CourseOrgAdmin(object):
 
 
 class CityAdmin(object):
-    pass
+    list_display = ["id", "name", "desc"]  # 列表页显示的字段
+    search_fields = ["name", "desc"]
+    list_filter = ["name", "desc", "add_time"]
+    list_editable = ["name", "desc"]  # 这样就不需要点进去进行编辑
 
 
 xadmin.site.register(Teacher, TeacherAdmin)
