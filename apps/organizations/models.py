@@ -11,6 +11,9 @@ class City(BaseModel):
         verbose_name = "城市"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name  # 这里return的值一定为必填项
+
 
 class CourseOrg(BaseModel):
     name = models.CharField(verbose_name=u"机构名称", max_length=50)
