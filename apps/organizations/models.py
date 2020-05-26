@@ -36,6 +36,9 @@ class CourseOrg(BaseModel):
         verbose_name = "课程机构"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 class Teacher(BaseModel):
     org = models.ForeignKey(CourseOrg, on_delete=models.CASCADE, verbose_name="所属机构")
@@ -52,3 +55,6 @@ class Teacher(BaseModel):
     class Meta:
         verbose_name = "讲师"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
